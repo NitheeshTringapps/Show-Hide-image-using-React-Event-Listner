@@ -8,7 +8,7 @@ class App extends React.Component{
     this.state = {showImage: true};
   }
 
-  handleClick = () => {
+  handleClick = () => { 
     if(this.state.showImage){
       alert("You Clicked to Show Image");
       document.getElementById('image').src = logo;
