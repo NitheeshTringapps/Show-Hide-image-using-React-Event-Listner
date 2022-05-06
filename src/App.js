@@ -1,25 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {showImage: true};
+  }
+
+  handleClick = () => {
+    if(this.state.showImage){
+      alert("You Clicked to Show Image");
+      document.getElementById('image').src = logo;
+      document.getElementById('imageButton').innerText="Click Me To Hide Image";
+      this.setState({showImage: false});
+    }
+    else{
+      alert("You Clicked to Hide Image");
+      document.getElementById('image').src = "";
+      document.getElementById('imageButton').innerText="Click Me To Show Image";
+      this.setState({showImage: true});
+    }
+  };
+
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+         <img  className="App-logo" alt="" id="image" />
+          <button onClick={this.handleClick} id="imageButton">Click Me To Show Image</button>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
